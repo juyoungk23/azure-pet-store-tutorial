@@ -20,31 +20,29 @@ import com.chtrembl.petstoreapp.model.Pet;
 import com.chtrembl.petstoreapp.model.Category;
 import com.chtrembl.petstoreapp.service.PetStoreService;
 
-import junit.framework.TestCase;
-
 @WebMvcTest(WebAppController.class)
-public class WebAppControllerTest extends TestCase{
+public class WebAppControllerTest {
 
-	@Autowired
-	private MockMvc mockMvc;
+    @Autowired
+    private MockMvc mockMvc;
 
-	@MockBean
-	private PetStoreService service;
+    @MockBean
+    private PetStoreService service;
 
-	@Test
-	public void testControllerGetRequest() throws Exception {
+    @Test
+    public void testControllerGetRequest() throws Exception {
         List<Pet> pets = new ArrayList<Pet>();
         Category category = new Category();
 
-        pets.add(new Pet("Bulldog",category));
-        pets.add(new Pet("Labrador",category));
-        pets.add(new Pet("Poodle",category));
-      
+        pets.add(new Pet("Bulldog", category));
+        pets.add(new Pet("Labrador", category));
+        pets.add(new Pet("Poodle", category));
+
         when(service.getPets("Dog")).thenReturn(pets);
 
-		this.mockMvc.perform(get("/dogbreeds").param("category", "Dog")).andDo(print()).andExpect(status().isOk())
+        this.mockMvc.perform(get("/dogbreeds").param("category", "Dog")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Bulldog")))
                 .andExpect(content().string(containsString("Labrador")))
-                .andExpect(content().string(containsString("Poodle")));    
-    }    
+                .andExpect(content().string(containsString("Poodle")));
+    }
 }
