@@ -15,7 +15,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: "96178ce7-ab3a-4c1a-8de4-4ffd3799c865"
+  dockerRegistryServiceConnection: "juyoungkimazurepetstorecr"
   imageRepository: "petstorepetservice"
   containerRegistry: "juyoungkimazurepetstorecr.azurecr.io"
   dockerfilePath: "petstore/petstorepetservice/Dockerfile"
@@ -87,7 +87,7 @@ stages:
                   displayName: Deploy to Kubernetes cluster
                   inputs:
                     action: deploy
-                    kubernetesServiceConnection: azurepetstoreservices-akscluster
+                    kubernetesServiceConnection: 96178ce7-ab3a-4c1a-8de4-4ffd3799c865
                     namespace: ingress-basic
                     manifests: |
                       $(Pipeline.Workspace)/manifests/petstorepetservice-deployment-everything-enabled.yml
