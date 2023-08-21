@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: azurepetstorepetservicecicdtoakspipeline 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azurepetstorepetservicecicdtoakspipeline
+  template:
+    metadata:
+      labels:
+        app: azurepetstorepetservicecicdtoakspipeline 
+    spec:
+      containers:
+        - name: azurepetstorepetservicecicdtoakspipeline 
+          image: juyoungkimazurepetstorecr.azurecr.io/azurepetstorepetservicecicdtoakspipeline
+          ports:
+          - containerPort: 80
