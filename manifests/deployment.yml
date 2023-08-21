@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: juyoungkazurepetstoretutorial 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: juyoungkazurepetstoretutorial
+  template:
+    metadata:
+      labels:
+        app: juyoungkazurepetstoretutorial 
+    spec:
+      containers:
+        - name: juyoungkazurepetstoretutorial 
+          image: juyoungkimazurepetstorecr.azurecr.io/juyoungkazurepetstoretutorial
+          ports:
+          - containerPort: 80
