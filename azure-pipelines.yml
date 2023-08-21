@@ -87,7 +87,7 @@ stages:
                   displayName: Deploy to Kubernetes cluster
                   inputs:
                     action: deploy
-                    kubernetesServiceConnection: juyoungkimazurepetstore-akscluster
+                    kubernetesServiceConnection: juyoungkimazurepetstore-akscluster-ingress-petstoreservices
                     namespace: ingress-basic
                     manifests: |
                       $(Pipeline.Workspace)/manifests/petstorepetservice-deployment-everything-enabled.yml
